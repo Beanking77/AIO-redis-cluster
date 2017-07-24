@@ -1,0 +1,16 @@
+include /redis-conf/redis-common.conf
+pidfile /var/run/redis_${PORT}.pid
+port ${PORT}
+logfile /var/log/redis/redis_${PORT}.log
+dir /var/lib/redis/${PORT}
+slave-serve-stale-data yes
+slave-read-only yes
+repl-diskless-sync no
+repl-diskless-sync-delay 5
+repl-disable-tcp-nodelay no
+slave-priority 100
+cluster-enabled yes
+cluster-config-file /redis-data/${PORT}/nodes.conf
+cluster-node-timeout 15000
+cluster-require-full-coverage no
+dir /redis-data/${PORT}

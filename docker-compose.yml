@@ -1,0 +1,14 @@
+version: '2'
+services:
+  redis:
+    image: aio-redis-cluster
+    container_name: {NAME}_6379-6380
+    restart: always
+    privileged: true
+    network_mode: "host"
+    ports:
+      - "6379-6380:6379-6380"
+    environment:
+      PORT_SEQ: "6379 6380"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
